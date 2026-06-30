@@ -1,33 +1,43 @@
-Identifier: eos0aaa
-Slug: template-model
+Identifier: eos48ue
+Slug: surrogate-adme-gnn
 Status: In progress
-Title: This is a template model
-Description: |
-  This is a description of the template model.
-  You can use multiple lines in this description.
+Title: Surrogate ADME Multi-Task Predictor
+Description: Multi-task graph neural network pretrained on synthetic ADME labels
+  for 270, 000+ compounds across 25 endpoints. Predicts permeability (Caco-2, 
+  PAMPA, LE-MDCK Papp), intrinsic clearance in rat, human, and mouse liver 
+  microsomes, plasma protein binding, fraction unbound, LogP, LogD, and CYP450 
+  reversible inhibition. Supports fine-tuning on experimental data for 
+  prospective drug discovery applications.
 Deployment:
   - Local
   - Online
 Source: Local, Online
 Source Type: Internal, Replicated, External
 Task: Annotation, Representation, Sampling
-Subtask: Property calculation or prediction, Activity prediction, Featurization, Projection, Similarity search, Generation
-Input: 
+Subtask: Property calculation or prediction, Activity prediction, Featurization,
+  Projection, Similarity search, Generation
+Input:
   - Compound
 Input Dimension: 1
-Output: 
+Output:
   - Value
   - Score
   - Compound
   - Text
 Output Dimension: 1
 Output Consistency: Fixed, Variable
-Interpretation: |
-  The output of this template model should be interpreted like this.
+Interpretation: The output of this template model should be interpreted like 
+  this.
 Tag:
-  - Tag 1
-  - Tag 2
-  - Tag 3
+  - ADME
+  - CYP450
+  - Metabolism
+  - Permeability
+  - LogP
+  - LogD
+  - Fraction bound
+  - Microsomal stability
+  - Chemical graph model
 Biomedical Area:
   - Biomedical Area 1
   - Biomedical Area 2
@@ -36,6 +46,7 @@ Target Organism:
   - Target Organism 2
 Publication Type: Peer reviewed, Preprint, Other
 Publication Year: 2026
-Publication: https://example.com
-Source Code: https://example.com
-License: GPL-3.0-or-later, MIT, Apache-2.0...
+Publication: https://chemrxiv.org/doi/full/10.26434/chemrxiv.15005075/v1
+Source Code: https://github.com/chemprop/chemprop
+License: MIT
+Contributor: arnaucoma24
