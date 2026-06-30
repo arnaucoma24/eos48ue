@@ -10,24 +10,19 @@ Description: Multi-task graph neural network pretrained on synthetic ADME labels
   prospective drug discovery applications.
 Deployment:
   - Local
-  - Online
-Source: Local, Online
-Source Type: Internal, Replicated, External
-Task: Annotation, Representation, Sampling
-Subtask: Property calculation or prediction, Activity prediction, Featurization,
-  Projection, Similarity search, Generation
+Source: Local
+Source Type: External
+Task: Annotation
+Subtask: Property calculation or prediction
 Input:
   - Compound
 Input Dimension: 1
 Output:
   - Value
-  - Score
-  - Compound
-  - Text
-Output Dimension: 1
-Output Consistency: Fixed, Variable
-Interpretation: The output of this template model should be interpreted like 
-  this.
+Output Dimension: 25
+Output Consistency: Fixed
+Interpretation: Predicted ADME property values across 25 endpoints covering permeability,
+  clearance, binding, lipophilicity, and CYP450 inhibition.
 Tag:
   - ADME
   - CYP450
@@ -39,14 +34,14 @@ Tag:
   - Microsomal stability
   - Chemical graph model
 Biomedical Area:
-  - Biomedical Area 1
-  - Biomedical Area 2
+  - ADMET
 Target Organism:
-  - Target Organism 1
-  - Target Organism 2
-Publication Type: Peer reviewed, Preprint, Other
+  - Homo sapiens
+  - Rattus norvegicus
+  - Mus musculus
+Publication Type: Preprint
 Publication Year: 2026
-Publication: https://chemrxiv.org/doi/full/10.26434/chemrxiv.15005075/v1
+Publication: https://doi.org/10.26434/chemrxiv.15005075/v1
 Source Code: https://github.com/chemprop/chemprop
 License: MIT
 Contributor: arnaucoma24
