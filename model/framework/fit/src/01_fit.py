@@ -65,6 +65,7 @@ CLUSTERS = {
 COMMON_ARGS = [
     "--smiles-columns", "smiles",
     "--task-type", "regression",
+    "--num-workers", "8",
     "--split-type", "scaffold_balanced",
     "--split-sizes", "0.85", "0.075", "0.075",
     "--metric", "mae",
