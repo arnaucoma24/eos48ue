@@ -12,8 +12,13 @@ paper: 5 message-passing steps, message-passing hidden dim 500, a 2-hidden-
 layer FFN of 2000 units, dropout 0, ensemble of 10.
 
 Run `00_data_cleaning.py` first to produce the cleaned input CSV.
+
+Each cluster is independent and can be submitted as its own SLURM job (see
+`slurm/train_<cluster>.sbatch`); pass `--cluster <name>` to train just one,
+or omit it to run all four sequentially.
 """
 
+import argparse
 import subprocess
 from pathlib import Path
 
@@ -88,11 +93,22 @@ def train_cluster(name, target_columns):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--cluster",
+        choices=list(CLUSTERS),
+        default=None,
+        help="Train only this cluster; omit to run all four sequentially.",
+    )
+    args = parser.parse_args()
+
     if not DATA_CSV.exists():
         raise FileNotFoundError(
             f"{DATA_CSV} not found. Run 00_download_data.py and 00_data_cleaning.py first."
         )
-    for name, target_columns in CLUSTERS.items():
+
+    clusters = {args.cluster: CLUSTERS[args.cluster]} if args.cluster else CLUSTERS
+    for name, target_columns in clusters.items():
         train_cluster(name, target_columns)
 
 

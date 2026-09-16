@@ -39,17 +39,36 @@ dataset and hyperparameters.
    python model/framework/fit/src/00_data_cleaning.py
    ```
 3. **Train the four cluster ensembles** (requires `chemprop` v2 installed —
-   `pip install chemprop`; see hyperparameters above, hardcoded in the script):
+   `pip install chemprop`; see hyperparameters above, hardcoded in the script).
+   `01_fit.py --cluster <name>` trains one cluster independently, so all four
+   can run as separate, parallel jobs:
    ```bash
-   python model/framework/fit/src/01_fit.py
+   python model/framework/fit/src/01_fit.py --cluster permeability   # or: clearance / binding_lipophilicity / cyp450
    ```
-   This runs `chemprop train` once per cluster, each producing an ensemble of
-   10 models under `results/<cluster_name>/`. **Hardware**: the 2024 paper
-   trained on NVIDIA V100 GPUs; a GPU is strongly recommended — training all
+   or all four sequentially with no `--cluster` flag. Each run produces an
+   ensemble of 10 models under `results/<cluster_name>/`.
+
+   **On the IRB Barcelona SLURM cluster (Aloy lab)**: submit
+   `model/framework/fit/slurm/train_<cluster>.sbatch` for each cluster — these
+   are pre-filled for `irbgcn07` (`sbnb_gpu_3090`) and `irbgcn10`
+   (`sbnb_gpu_h200`), the lab's own free-billing GPU nodes (6x RTX 3090 / 8x
+   H200). **Never submit to `spot_*` or `irb_gpu_*` partitions/nodes — those
+   are billed to the PI.** From the repo root on the cluster:
+   ```bash
+   mkdir -p logs
+   for c in permeability clearance binding_lipophilicity cyp450; do
+     sbatch model/framework/fit/slurm/train_${c}.sbatch
+   done
+   ```
+   **Hardware**: the 2024 paper trained on NVIDIA V100 GPUs. Training all
    four clusters (10-model ensembles, up to ~270k compounds, hidden dim
-   500/2000) on CPU is impractical. Expect on the order of hours per cluster
-   on a single V100-class GPU; scale down `--epochs`/`--ensemble-size` for a
-   quicker smoke test if needed.
+   500/2000) on CPU is impractical — a GPU is required. Expect on the order
+   of hours per cluster on a single modern GPU; scale down
+   `--epochs`/`--ensemble-size` in `01_fit.py` for a quicker smoke test.
+   Note: the pip-installed `torch` wheel defaults to the latest CUDA build,
+   which may exceed what the node's driver supports — pin to a matching
+   `--index-url https://download.pytorch.org/whl/cu128` (or whatever the
+   node's driver supports) if you hit a "CUDA driver too old" error.
 4. **Check performance** (aggregates each cluster's held-out test MAE; sanity
    check against the paper's reported CV MAE ~0.03-0.09 and prospective MAE
    ~0.23-0.49, depending on endpoint):
