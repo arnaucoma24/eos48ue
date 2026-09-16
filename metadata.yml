@@ -1,13 +1,14 @@
 Identifier: eos48ue
-Slug: surrogate-adme-gnn
+Slug: surrogate-adme
 Status: In progress
 Title: Surrogate ADME Multi-Task Predictor
 Description: Multi-task graph neural network pretrained on synthetic ADME labels
-  for 270, 000+ compounds across 25 endpoints. Predicts permeability (Caco-2, 
-  PAMPA, LE-MDCK Papp), intrinsic clearance in rat, human, and mouse liver 
-  microsomes, plasma protein binding, fraction unbound, LogP, LogD, and CYP450 
-  reversible inhibition. Supports fine-tuning on experimental data for 
-  prospective drug discovery applications.
+  for 270,000+ compounds across 25 endpoints. Predicts permeability (Caco-2,
+  PAMPA, LE-MDCK Papp, MDCK-MDR1 efflux ratio), intrinsic clearance and plasma
+  protein binding in rat, human, mouse, dog, and monkey liver microsomes,
+  human serum albumin/microsomal/brain binding, LogP, LogD, and CYP3A4
+  time-dependent and CYP3A4/CYP2C9/CYP2D6 reversible inhibition. Supports
+  fine-tuning on experimental data for prospective drug discovery applications.
 Deployment:
   - Local
 Source: Local
@@ -22,7 +23,11 @@ Output:
 Output Dimension: 25
 Output Consistency: Fixed
 Interpretation: Predicted ADME property values across 25 endpoints covering permeability,
-  clearance, binding, lipophilicity, and CYP450 inhibition.
+  clearance, binding, lipophilicity, and CYP450 inhibition. Most endpoints are
+  log-transformed (e.g. LogCLint, LogPapp, LogIC50); LogP and LogD are reported
+  directly. These are surrogate-model predictions, not experimental values;
+  reported prospective mean absolute error ranges from ~0.23 to ~0.49
+  (log units), depending on endpoint (Peteani et al., ChemRxiv 2026).
 Tag:
   - ADME
   - CYP450
@@ -39,6 +44,8 @@ Target Organism:
   - Homo sapiens
   - Rattus norvegicus
   - Mus musculus
+  - Canis lupus familiaris
+  - Macaca fascicularis
 Publication Type: Preprint
 Publication Year: 2026
 Publication: https://doi.org/10.26434/chemrxiv.15005075/v1
