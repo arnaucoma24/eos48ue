@@ -12,7 +12,7 @@ Description: Multi-task graph neural network pretrained on synthetic ADME labels
 Deployment:
   - Local
 Source: Local
-Source Type: External
+Source Type: Replicated
 Task: Annotation
 Subtask: Property calculation or prediction
 Input:
@@ -46,6 +46,7 @@ Target Organism:
   - Mus musculus
   - Canis lupus familiaris
   - Macaca fascicularis
+  - Sus scrofa domesticus
 Publication Type: Preprint
 Publication Year: 2026
 Publication: https://doi.org/10.26434/chemrxiv.15005075/v1
