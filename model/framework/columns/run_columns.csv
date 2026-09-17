@@ -1,1 +1,26 @@
 name,type,direction,description
+le_mdck_v2_logpapp,float,high,Predicted log apparent permeability (LogPapp) in the low-efflux MDCKv2 assay
+le_mdck_v1_logpapp,float,high,Predicted log apparent permeability (LogPapp) in the low-efflux MDCKv1 assay
+caco2_logpapp,float,high,Predicted log apparent permeability (LogPapp) in the Caco-2 assay
+mdck_mdr1_loger,float,high,Predicted log efflux ratio (LogER) in the MDCK-MDR1 assay
+logpampa,float,high,Predicted log permeability in the parallel artificial membrane permeability assay
+rat_lm_logclint,float,high,Predicted log intrinsic clearance (LogCLint) in rat liver microsomes
+human_lm_logclint,float,high,Predicted log intrinsic clearance (LogCLint) in human liver microsomes
+mouse_lm_logclint,float,high,Predicted log intrinsic clearance (LogCLint) in mouse liver microsomes
+minipig_lm_logclint,float,high,Predicted log intrinsic clearance (LogCLint) in minipig liver microsomes
+cyno_lm_logclint,float,high,Predicted log intrinsic clearance (LogCLint) in cynomolgus monkey liver microsomes
+dog_lm_logclint,float,high,Predicted log intrinsic clearance (LogCLint) in dog liver microsomes
+logfu_rat,float,high,Predicted log unbound plasma fraction (LogFu) in rat
+logfu_human,float,high,Predicted log unbound plasma fraction (LogFu) in human
+logfu_mouse,float,high,Predicted log unbound plasma fraction (LogFu) in mouse
+logfu_dog,float,high,Predicted log unbound plasma fraction (LogFu) in dog
+logfu_monkey,float,high,Predicted log unbound plasma fraction (LogFu) in monkey
+hplc_logfu_hsa,float,high,Predicted log unbound fraction to human serum albumin measured by HPLC
+logfu_brain,float,high,Predicted log unbound fraction in brain tissue
+logfu_mic,float,high,Predicted log unbound fraction in liver microsomes
+nibr_logp,float,high,Predicted log octanol-water partition coefficient (LogP) via the Novartis direct method
+nibr_logd74,float,high,Predicted log distribution coefficient at pH 7.4 (LogD7.4) via the Novartis direct method
+cyp3a4_tdi_logkobs,float,high,Predicted log observed inactivation rate constant (logkobs) for CYP3A4 time-dependent inhibition
+cyp3a4_pic50,float,high,Predicted negative log IC50 (pIC50) for reversible CYP3A4 inhibition
+cyp2c9_pic50,float,high,Predicted negative log IC50 (pIC50) for reversible CYP2C9 inhibition
+cyp2d6_pic50,float,high,Predicted negative log IC50 (pIC50) for reversible CYP2D6 inhibition

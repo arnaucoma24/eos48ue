@@ -1,6 +1,7 @@
 # Added manually
 model/framework/fit/
 model/checkpoints/
+.eosvc/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

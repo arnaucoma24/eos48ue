@@ -22,12 +22,11 @@ Output:
   - Value
 Output Dimension: 25
 Output Consistency: Fixed
-Interpretation: Predicted ADME property values across 25 endpoints covering permeability,
-  clearance, binding, lipophilicity, and CYP450 inhibition. Most endpoints are
-  log-transformed (e.g. LogCLint, LogPapp, LogIC50); LogP and LogD are reported
-  directly. These are surrogate-model predictions, not experimental values;
-  reported prospective mean absolute error ranges from ~0.23 to ~0.49
-  (log units), depending on endpoint (Peteani et al., ChemRxiv 2026).
+Interpretation: Predicted values for 25 ADME endpoints spanning permeability,
+  clearance, plasma/tissue binding, lipophilicity, and CYP450 inhibition. Most
+  are log-transformed; LogP/LogD are direct. Surrogate-model predictions, not
+  experimental; prospective MAE ~0.23-0.49 log units (Peteani et al., ChemRxiv
+  2026).
 Tag:
   - ADME
   - CYP450
@@ -41,12 +40,7 @@ Tag:
 Biomedical Area:
   - ADMET
 Target Organism:
-  - Homo sapiens
-  - Rattus norvegicus
-  - Mus musculus
-  - Canis lupus familiaris
-  - Macaca fascicularis
-  - Sus scrofa domesticus
+  - Any
 Publication Type: Preprint
 Publication Year: 2026
 Publication: https://doi.org/10.26434/chemrxiv.15005075/v1
